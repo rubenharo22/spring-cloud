@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.rharo.cloud</groupId>
+	<artifactId>parent-pom</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<packaging>pom</packaging>
+	<name>api-parent-pom</name>
+	<description>Parent POM para el proyecto API REST</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.2.RELEASE</version>
+		<relativePath />
+	</parent>
+
+	<properties>
+
+		<!-- Common Java and Maven properties -->
+		<java.version>11</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+
+		<!-- Swagger versions -->
+		<swagger-annotations.version>1.5.15</swagger-annotations.version>
+
+		<!-- Plugins versions -->
+		<swagger-codegen-maven-plugin.version>2.3.1</swagger-codegen-maven-plugin.version>
+		<lombok.version>1.18.22</lombok.version>
+
+		<jpastream.version>1.0.2</jpastream.version>
+		<modelmapper.version>2.4.4</modelmapper.version>
+		<io.springfox.version>2.9.2</io.springfox.version>
+		<spring-cloud.version>2.2.9.RELEASE</spring-cloud.version>
+
+	</properties>
+
+
+	<modules>
+		<module>api-rest-ms</module>
+		<module>eureka-server</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- SWAGGER DEPENDENCIES -->
+			<dependency>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-annotations</artifactId>
+				<version>${swagger-annotations.version}</version>
+			</dependency>
+
+			<!-- Lombok -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<optional>true</optional>
+			</dependency>
+
+			<!-- Spring fox -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${io.springfox.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${io.springfox.version}</version>
+			</dependency>
+
+			<!-- Spring-cloud-starter-openfeign -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-openfeign</artifactId>
+				<version>${spring-cloud.version}</version>
+			</dependency>
+
+			<!-- Spring-cloud-starter-netflix-eureka-server -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+				<version>${spring-cloud.version}</version>
+			</dependency>
+
+			<!-- Spring-cloud-starter-netflix-eureka-client -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+				<version>${spring-cloud.version}</version>
+			</dependency>
+
+
+			<!-- JPAStream dependencies -->
+			<dependency>
+				<groupId>com.speedment.jpastreamer</groupId>
+				<artifactId>jpastreamer-core</artifactId>
+				<version>${jpastream.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.speedment.jpastreamer.integration.spring</groupId>
+				<artifactId>spring-boot-jpastreamer-autoconfigure</artifactId>
+				<version>${jpastream.version}</version>
+			</dependency>
+
+			<!-- Modelmapper -->
+			<dependency>
+				<groupId>org.modelmapper</groupId>
+				<artifactId>modelmapper</artifactId>
+				<version>${modelmapper.version}</version>
+			</dependency>
+
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-codegen-maven-plugin</artifactId>
+				<version>${swagger-codegen-maven-plugin.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
