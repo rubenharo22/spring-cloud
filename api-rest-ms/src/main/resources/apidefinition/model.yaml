@@ -1,0 +1,100 @@
+definitions:
+
+  ErrorDto:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Reference to identifier of error
+      module:
+        type: string 
+        description: Module where the error has occurred.
+      type:
+       type: string
+       enum:
+        - info
+        - warning
+        - error
+        - fatal
+      message:
+        type: string
+        description: Detail of the error
+
+  JokeDto:
+    type: object
+    required:
+    - id
+    - max_car_id
+    properties:
+      id:
+        type: string
+      value:    
+        type: string   
+      name:
+        type: string
+      created_at:
+        type: string 
+      updated_at:
+        type: string        
+      icon_url:
+        type: string
+      categories:       
+        type: array
+        uniqueItems: true
+        items:
+          type: string
+               
+  ManufacturerDto:
+    type: object
+    required:
+    - id
+    - max_car_id
+    properties:
+      id:
+        type: integer
+        format: int64
+      max_car_id:    
+        type: integer
+        format: int64        
+      name:
+        type: string
+      num_models:
+        type: integer
+        format: int32         
+      avg_horsepower:
+        type: number
+      avg_price:
+        type: number        
+      img_url:
+        type: string
+        
+  BrandDto:
+    type: object
+    required:
+    - id
+    - name
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      description:
+        type: string  
+        
+  CarDto:
+    type: object
+    required:
+    - id
+    - color
+    - brandName    
+    properties:
+      id:
+        type: integer
+        format: int64
+      color:
+        type: string
+      brandName:
+        type: string  
+      model:
+        type: string

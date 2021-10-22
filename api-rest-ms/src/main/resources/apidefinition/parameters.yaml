@@ -1,0 +1,37 @@
+parameters:
+    brandIdPath:
+      name: brandId
+      in: path
+      description: ID of brand to return
+      required: true
+      type: integer
+      format: int64
+    carIdPath:
+      name: carId
+      in: path
+      description: ID of car to return
+      required: true
+      type: integer
+      format: int64 
+    categoryJokeIdPath:
+      name: categoryJokeId
+      in: path
+      description: ID of category joke to return
+      required: true
+      type: string   
+      
+      
+       
+     
+    brandIdParam:
+      name: brandId
+      in: query
+      description: ID of brand to operate
+      required: true
+      type: string
+    carIdParam:
+      name: carId
+      in: query
+      description: ID of car
+      required: true
+      type: string     

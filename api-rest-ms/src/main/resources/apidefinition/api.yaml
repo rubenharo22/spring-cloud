@@ -1,0 +1,200 @@
+swagger: "2.0"
+info:
+  description: "API"
+  version: "1.0.0"
+  title: "Api Ms"
+host: "localhost:8080"
+basePath: "/v1"
+schemes:
+- "https"
+- "http"
+tags:
+- name: "apiMs"
+  description: "Api Ms"
+paths:
+
+  /joke:
+    get:
+      tags:
+        - chuckNorris
+      summary: Retrieve a random chuck joke in JSON format
+      operationId: getRandomJoke
+      produces:
+      - application/json
+      responses:
+        200:
+          description: A object with a random chuck
+          schema:
+            $ref: "./model.yaml#/definitions/JokeDto"
+        default:
+          description: unexpected error
+          schema:
+            $ref: "./model.yaml#/definitions/ErrorDto"
+      security:
+        - security_auth:
+          - 'read:joke'
+                   
+  /joke/categories:
+    get:
+      tags:
+        - chuckNorris
+      summary: Retrieve a list of available categories
+      operationId: getCategoriesJoke
+      produces:
+      - application/json
+      responses:
+        200:
+          description: List of available categories
+          schema:
+            type: array
+            items:
+             type: string
+        default:
+          description: unexpected error
+          schema:
+            $ref: "./model.yaml#/definitions/ErrorDto"
+      security:
+        - security_auth:
+          - 'read:joke'
+                   
+  /joke/{categoryJokeId}:
+    get:
+      tags:
+        - chuckNorris
+      summary: Retrieve a random chuck joke by category
+      operationId: getRandomJokeByCategory
+      produces:
+        - application/json
+      parameters:
+        - $ref: './parameters.yaml#/parameters/categoryJokeIdPath'
+      responses:
+        200:
+          description: A object with a random chuck
+          schema:
+            $ref: "./model.yaml#/definitions/JokeDto"
+        404:
+          description: Brand not found
+          schema:
+            $ref: "./model.yaml#/definitions/ErrorDto"
+      security:
+      - security_auth:
+          - 'read:joke'          
+          
+  /manufacturer:
+    get:
+      tags:
+        - manufacturer
+      summary: List all manufacturers
+      operationId: getManufacturer
+      produces:
+      - application/json
+      responses:
+        200:
+          description: A paged array of manufacturers
+          schema:
+            type: array
+            items:
+              $ref: "./model.yaml#/definitions/ManufacturerDto"
+        default:
+          description: unexpected error
+          schema:
+            $ref: "./model.yaml#/definitions/ErrorDto"
+      security:
+        - security_auth:
+          - 'read:manufacturer'
+         
+  /brand:
+    get:
+      tags:
+        - brand
+      summary: List all brands
+      operationId: getBrand
+      produces:
+      - application/json
+      responses:
+        200:
+          description: A paged array of brands
+          schema:
+            type: array
+            items:
+              $ref: "./model.yaml#/definitions/BrandDto"
+        default:
+          description: unexpected error
+          schema:
+            $ref: "./model.yaml#/definitions/ErrorDto"
+      security:
+        - security_auth:
+          - 'read:brand'
+        
+
+  /brand/{brandId}:
+    get:
+      tags:
+        - brand
+      summary: Get brand Detail by ID
+      operationId: getBrandDetail
+      produces:
+        - application/json
+      parameters:
+        - $ref: './parameters.yaml#/parameters/brandIdPath'
+      responses:
+        200:
+          description: Brand found
+          schema:
+            $ref: "./model.yaml#/definitions/BrandDto"
+        404:
+          description: Brand not found
+          schema:
+            $ref: "./model.yaml#/definitions/ErrorDto"
+      security:
+      - security_auth:
+          - 'read:brand'
+
+  /car:
+    get:
+      tags:
+        - car
+      summary: List all cars
+      operationId: getCar
+      produces:
+      - application/json
+      responses:
+        200:
+          description: A paged array of cars
+          schema:
+            type: array
+            items:
+              $ref: "./model.yaml#/definitions/CarDto"
+        default:
+          description: unexpected error
+          schema:
+            $ref: "./model.yaml#/definitions/ErrorDto"
+      security:
+        - security_auth:
+          - 'read:car'
+        
+
+  /car/{carId}:
+    get:
+      tags:
+        - car
+      summary: Get brand Detail by ID
+      operationId: getCarDetail
+      produces:
+        - application/json
+      parameters:
+        - $ref: './parameters.yaml#/parameters/carIdPath'
+      responses:
+        200:
+          description: Brand found
+          schema:
+            $ref: "./model.yaml#/definitions/CarDto"
+        404:
+          description: Brand not found
+          schema:
+            $ref: "./model.yaml#/definitions/ErrorDto"
+      security:
+      - security_auth:
+          - 'read:car'
+
+          
