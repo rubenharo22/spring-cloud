@@ -15,7 +15,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.2.RELEASE</version>
+		<version>2.3.12.RELEASE</version>
 		<relativePath />
 	</parent>
 
@@ -32,7 +32,7 @@
 		<swagger-annotations.version>1.5.15</swagger-annotations.version>
 
 		<!-- Plugins versions -->
-		<swagger-codegen-maven-plugin.version>2.3.1</swagger-codegen-maven-plugin.version>
+		<swagger-codegen-maven-plugin.version>2.4.24</swagger-codegen-maven-plugin.version>
 		<lombok.version>1.18.22</lombok.version>
 
 		<jpastream.version>1.0.2</jpastream.version>

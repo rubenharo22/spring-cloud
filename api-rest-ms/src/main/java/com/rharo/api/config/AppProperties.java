@@ -18,6 +18,22 @@ public class AppProperties {
 
 	@Setter
 	@Getter
+	private String groupName;
+	
+	@Setter
+	@Getter
+	private String basePackage;
+	
+	@Setter
+	@Getter
+	private String title;
+	
+	@Setter
+	@Getter
+	private String description;
+	
+	@Setter
+	@Getter
 	private String version;
 
 	@Setter
@@ -27,6 +43,8 @@ public class AppProperties {
 	@Setter
 	@Getter
 	private List<String> serviceList;
+	
+	
 
 	@PostConstruct
 	public void setUp() {
